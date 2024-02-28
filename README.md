@@ -1,6 +1,6 @@
 ## KABOOOM
 
-**Kabooom** is a thrilling online 2D platformer where friendship and firepower combine to deliver explosive action. Developed by **Krekhád**, a duo of passionate programmers - **Hamza Mughal** and **Danyal Abbas** - **Kaboom** takes you on a journey of cooperative mayhem. 
+**Kabooom** is a thrilling online 2D platformer where friendship and firepower combine to deliver explosive action. Developed by **Krekhed**, a duo of passionate programmers - **Hamza Mughal** and **Danyal Abbas** - **Kaboom** takes you on a journey of cooperative mayhem. 
 
 **Team Up and Blast Away:**
 In **Kaboom**, you and your online teammate join forces to battle across vibrant, weapon-filled levels. Master a variety of guns, from classic pistols to devastating rocket launchers, and unleash a symphony of destruction upon your enemies. 
@@ -21,7 +21,7 @@ In **Kaboom**, you and your online teammate join forces to battle across vibrant
 
 **Kaboom** invites you to experience a whirlwind of cooperative action. Are you ready to unleash mayhem with your friends? 
 
-**Stay tuned for further updates and join the Kaboom Krekhád!**
+**Stay tuned for further updates and join the Kaboom Krekhed!**
 
 
 **Additional Notes:**
