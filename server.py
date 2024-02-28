@@ -13,6 +13,15 @@ DISCONNECT_MESSAGE = "DISCONNECT_TRUE"
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 
+def send_message(server, msg):
+    message = json.dumps(msg)
+    message = message.encode(FORMAT)
+    msg_len = len(message)
+    send_lenght = str(msg_len).encode(FORMAT)
+    send_lenght += b' ' * (HEADER - len(send_lenght))
+    server.send(send_lenght)
+    server.send(message)
+
 def handle_client(conn, addr):
     print(f"[NEW CONNECTION]... (address = {addr})")
 
@@ -25,9 +34,11 @@ def handle_client(conn, addr):
             continue
         msg_lenght = int(msg_lenght)
         msg = conn.recv(msg_lenght).decode(FORMAT)
-        if msg == DISCONNECT_MESSAGE:
+        msg = json.loads(msg)
+        if msg["msg"] == DISCONNECT_MESSAGE:
             connection = False
-        print(f"[MESSAGE] (content = {msg}, address = {addr})")
+        print(f"[MESSAGE] (content = {msg['msg']}, address = {addr})")
+        send_message(conn,msg)
     
     conn.close()
 
