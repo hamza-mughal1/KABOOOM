@@ -37,8 +37,17 @@ def handle_client(conn, addr):
         msg = json.loads(msg)
         if msg["msg"] == DISCONNECT_MESSAGE:
             connection = False
-        print(f"[MESSAGE] (content = {msg['msg']}, address = {addr})")
-        send_message(conn,msg)
+            continue
+        # print(f"[MESSAGE] (content = {msg['msg']}, address = {addr})")
+            
+        x,y = msg["coor"]
+        
+        x += 1
+        y += 1
+
+        return_msg = {"msg" : 1, "coor" : [x,y]}
+        
+        send_message(conn,return_msg)
     
     conn.close()
 
