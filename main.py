@@ -46,7 +46,6 @@ class MainPlayer:
             self.jump_velocity = self.jump_height
 
     def control_movement(self, run, rects):
-        
 
         if self.move_left:
             self.move(-self.movement_velocity,0)
@@ -54,12 +53,21 @@ class MainPlayer:
             self.move(self.movement_velocity,0)
         if self.move_jump:
             self.jump()
+
+        if (self.move_jump == False):
+            self.y += 11
             
         rect = self.player_rect()
         for i in rects:
-            if rect.bottom < i[0].top and i[1] == (0,0,0):
-                self.y = i[0].top
-
+            if (rect.colliderect(i[0]) and i[1] == (0,0,0)):
+                # print("bottom : ",i[0].bottom, "\ntop : ",rect.top, "\ny-value : ",self.y)
+                if (i[0].bottom >= rect.top) and ( rect.bottom > i[0].bottom):
+                    self.y = i[0].bottom
+                    
+                    
+                elif (rect.bottom >= i[0].top):
+                    self.y = i[0].top - self.height 
+                    
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -76,6 +84,7 @@ class MainPlayer:
                     self.move_left = False
                 elif event.key == pygame.K_RIGHT:
                     self.move_right = False
+
 
         return run
 
@@ -109,8 +118,7 @@ class Level:
             pygame.draw.rect(surface,i[1],i[0],9)
 
             
-
-player = MainPlayer(window_size[0]/2,150,50,50)
+player = MainPlayer(window_size[0]/2,(window_size[1]/2)+50,50,50)
 level = Level(window_height=window_size[0],window_width=window_size[1],block_size=20,grid=grid)
 level.create_rects()
 
